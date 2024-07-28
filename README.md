@@ -13,3 +13,10 @@ Curso da Alura de Introdução a JavaScript.
 - Como alterar arrays com os métodos do JS
 - O que são laços de repetição e como usá-los
 - Modificando arrays utilizando métodos do JS moderno (ES6 em diante)
+
+### Curso 03 - JavaScript: conhecendo objetos
+- O que são objetos e porque são importantes
+- Como acessar objetos JavaScript
+- Como percorrer propriedades de objetos e interagir com elas
+- O que são métodos de objetos e como utilizá-los
+- Manipule objetos utilizando métodos do JavaScript
