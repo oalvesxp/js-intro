@@ -33,7 +33,7 @@ const keysObject = Object.keys(student);
 console.log(keysObject);
 
 if (!keysObject.includes('cellphones')) {
-    console.error(`ERROR: é necessário cadastrar um telefone.`);
+    console.error(`ERROR: é necessário cadastrar um endereço.`);
 }
 
 /** Array de valores do objetos */
