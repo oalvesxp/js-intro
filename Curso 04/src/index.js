@@ -6,11 +6,16 @@ const link = dir[2];
 /** node '.\Curso 04\src\index.js' '.\Curso 04\files\texto-web.txt' */
 /** lendo arquivo */
 fs.readFile(link, 'utf-8', (err, data) => {
-    if (err) {
-        console.log(err);
-        return;
+    try {
+        if (err) throw err;
+        countWords(data);
+
+    } catch (err){
+        if (err.code === 'ENOENT') console.log('Digite o caminho de um arquivo válido!');
+        else console.log(err);
+        
     }
-    countWords(data);  
+    
 });
 
 function countWords(text) {
