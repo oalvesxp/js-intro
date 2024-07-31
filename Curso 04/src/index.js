@@ -6,7 +6,8 @@ const link = dir[2];
 /** Contagem por paragrafo */
 function bronkenParagraphs(text) {
     const paragraphs = text.toLowerCase().split('\n');
-    const count = paragraphs.map((paragraph) => {
+    const count = paragraphs.flatMap((paragraph) => {
+        if (!paragraph) return [];
         return wordsDoble(paragraph);
     });
 
