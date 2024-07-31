@@ -3,7 +3,7 @@ const fs = require('fs');
 const dir = process.argv;
 const link = dir[2];
 
-
+/** Contagem por paragrafo */
 function bronkenParagraphs(text) {
     const paragraphs = text.toLowerCase().split('\n');
     const count = paragraphs.map((paragraph) => {
@@ -13,6 +13,11 @@ function bronkenParagraphs(text) {
     console.log(count);
 }
 
+/** Removendo caracteres especias por nada */
+function cleanUp(word) {
+    return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+}  
+
 /** Criando um array de palavras */
 /** Contar as ocorrências */
 /** Montar um objeto com um resultado */
@@ -21,7 +26,10 @@ function wordsDoble(text) {
     const result = {};
 
     listWords.forEach(word => {
-        result[word] = (result[word] || 0) + 1;
+        if (word.length >= 3) {
+            const clean = cleanUp(word);
+            result[clean] = (result[clean] || 0) + 1;
+        }
     });
 
     return result;
