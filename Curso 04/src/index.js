@@ -3,9 +3,18 @@ const fs = require('fs');
 const dir = process.argv;
 const link = dir[2];
 
-/** Contagem por paragrafo */
-function bronkenParagraphs(text) {
-    const paragraphs = text.toLowerCase().split('\n');
+/** node '.\Curso 04\src\index.js' '.\Curso 04\files\texto-web.txt' */
+/** lendo arquivo */
+fs.readFile(link, 'utf-8', (err, data) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    countWords(data);  
+});
+
+function countWords(text) {
+    const paragraphs = extractParagraphs(text);
     const count = paragraphs.flatMap((paragraph) => {
         if (!paragraph) return [];
         return wordsDoble(paragraph);
@@ -14,14 +23,16 @@ function bronkenParagraphs(text) {
     console.log(count);
 }
 
+function extractParagraphs(text) {
+    return text.toLowerCase().split('\n');
+}
+
 /** Removendo caracteres especias por nada */
 function cleanUp(word) {
     return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
 }  
 
-/** Criando um array de palavras */
-/** Contar as ocorrências */
-/** Montar um objeto com um resultado */
+/** Criando um array de palavras repetidas */
 function wordsDoble(text) {
     const listWords = text.split(' ');
     const result = {};
@@ -35,11 +46,3 @@ function wordsDoble(text) {
 
     return result;
 }
-
-/** node '.\Curso 04\src\index.js' '.\Curso 04\files\texto-web.txt' */
-/** lendo arquivo */
-fs.readFile(link, 'utf-8', (err, data) => {
-    if (err) throw err;
-    bronkenParagraphs(data);
-    // wordsDoble(data);
-});
