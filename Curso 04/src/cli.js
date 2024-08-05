@@ -1,51 +1,65 @@
 import fs from 'fs'
+import path from 'path';
 import errors from './entity/errors.js'
+
 import { countWords } from './index.js';
 import { output } from './helpers.js';
+import { Command } from 'commander';
 
-const dir = process.argv;
-const link = dir[2];
-const path = dir[3];
+const program = new Command();
 
-fs.readFile(link, 'utf-8', (err, data) => {
-    try {
-        if (err) throw err;
-        const result = countWords(data);
-        saveFile (result, path);
-    } catch (err){
-        errors(err);
+program
+    .version('0.0.1')
+    .option('-t, --file <string>', 'Arquivo para ser processado')
+    .option('-d, --filePath <string>', 'Destino para salvar os resultados')
+    .action((options) => {
+        const {file, filePath} = options;
+
+        if (!file || !filePath) {
+            console.error('ERRO - Inserir arquivo e destino:\n -t [dir/arquivo.txt] -d [dir/]');
+            program.help();
+            return;
+        }
+
+        const origin = path.resolve(file);
+        const destiny = path.resolve(filePath);
+
+        try{
+            processFile(origin, destiny);
+            console.log('Texto processado com sucesso');
+        } catch(err){
+            console.log('Ocorreu um erro no processamento', err);
+        };
     }
-    
-});
+);
 
-/** Salvando arquivo com async e await */
-/** Forma mais simples de fazer (conhecido como açucar sintático) */
-// async function saveFile(wordsList, path) {
-//     const newFile = `${path}/result.txt`;
-//     const words = JSON.stringify(wordsList);
-    
-//     try {
-//         await fs.promises.writeFile(newFile, words);
-//         console.log('Arquivo salvo');
-//     } catch (err) {
-//         throw err;
-//     }
-// }
+program.parse();
 
-/** requisição asincrona com then */
-function saveFile(wordsList, path) {
-    const newFile = `${path}/result.txt`;
+/** Processando arquivo */
+function processFile(file, filePath) {
+    fs.readFile(file, 'utf-8', (err, data) => {
+        try {
+            if (err) throw err;
+            const result = countWords(data);
+            saveFile (result, filePath);
+        } catch (err){
+            errors(err);
+        }
+        
+    });
+};
+
+/** Salvando resultado em arquivo */
+async function saveFile(wordsList, filePath) {
+    const newFile = `${filePath}/result.txt`;
     const words = output(wordsList);
-
-    fs.promises.writeFile(newFile, words)
-        .then(() => {
-            /** processamento realizado com o resultado do promise */
-            console.log('Arquivo criado');
-        })
-        .catch((err) => {
-            throw err;
-        })
-        .finally(() => console.log('Operação finalizada'));
+    
+    try {
+        await fs.promises.writeFile(newFile, words);
+        console.log('Arquivo salvo');
+    } catch (err) {
+        throw err;
+    }
 }
 
-/** node .\src\cli.js '.\files\texto-kanban.txt' */
+/** exec: node .\src\cli.js -t '.\files\texto-kanban.txt' -d .\results\ */
