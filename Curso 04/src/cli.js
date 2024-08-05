@@ -5,6 +5,7 @@ import errors from './entity/errors.js'
 import { countWords } from './index.js';
 import { output } from './helpers.js';
 import { Command } from 'commander';
+import chalk from 'chalk';
 
 const program = new Command();
 
@@ -26,9 +27,9 @@ program
 
         try{
             processFile(origin, destiny);
-            console.log('Texto processado com sucesso');
+            console.log(chalk.green('Texto processado com sucesso'));
         } catch(err){
-            console.log('Ocorreu um erro no processamento', err);
+            console.log(chalk.red('Ocorreu um erro no processamento', err));
         };
     }
 );
@@ -56,7 +57,7 @@ async function saveFile(wordsList, filePath) {
     
     try {
         await fs.promises.writeFile(newFile, words);
-        console.log('Arquivo salvo');
+        console.log(chalk.green('Arquivo salvo'));
     } catch (err) {
         throw err;
     }
