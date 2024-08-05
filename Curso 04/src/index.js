@@ -5,7 +5,7 @@ export function countWords(text) {
         return wordsDoble(paragraph);
     });
 
-    console.log(count);
+    return count;
 }
 
 function extractParagraphs(text) {
