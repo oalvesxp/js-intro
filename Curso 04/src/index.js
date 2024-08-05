@@ -1,23 +1,4 @@
-const fs = require('fs');
-const error = require('./entity/errors');
-
-const dir = process.argv;
-const link = dir[2];
-
-/** node '.\Curso 04\src\index.js' '.\Curso 04\files\texto-web.txt' */
-/** lendo arquivo */
-fs.readFile(link, 'utf-8', (err, data) => {
-    try {
-        if (err) throw err;
-        countWords(data);
-
-    } catch (err){
-        error(err);
-    }
-    
-});
-
-function countWords(text) {
+export function countWords(text) {
     const paragraphs = extractParagraphs(text);
     const count = paragraphs.flatMap((paragraph) => {
         if (!paragraph) return [];
