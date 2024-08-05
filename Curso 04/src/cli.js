@@ -1,6 +1,7 @@
 import fs from 'fs'
 import errors from './entity/errors.js'
 import { countWords } from './index.js';
+import { output } from './helpers.js';
 
 const dir = process.argv;
 const link = dir[2];
@@ -34,7 +35,7 @@ fs.readFile(link, 'utf-8', (err, data) => {
 /** requisição asincrona com then */
 function saveFile(wordsList, path) {
     const newFile = `${path}/result.txt`;
-    const words = JSON.stringify(wordsList);
+    const words = output(wordsList);
 
     fs.promises.writeFile(newFile, words)
         .then(() => {
