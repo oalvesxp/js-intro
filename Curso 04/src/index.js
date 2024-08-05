@@ -1,4 +1,5 @@
 const fs = require('fs');
+const error = require('./entity/errors');
 
 const dir = process.argv;
 const link = dir[2];
@@ -11,9 +12,7 @@ fs.readFile(link, 'utf-8', (err, data) => {
         countWords(data);
 
     } catch (err){
-        if (err.code === 'ENOENT') console.log('Digite o caminho de um arquivo válido!');
-        else console.log(err);
-        
+        error(err);
     }
     
 });
