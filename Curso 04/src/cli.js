@@ -17,17 +17,34 @@ fs.readFile(link, 'utf-8', (err, data) => {
     
 });
 
-/** node .\src\cli.js '.\files\texto-kanban.txt' */
+/** Salvando arquivo com async e await */
+/** Forma mais simples de fazer (conhecido como açucar sintático) */
+// async function saveFile(wordsList, path) {
+//     const newFile = `${path}/result.txt`;
+//     const words = JSON.stringify(wordsList);
+    
+//     try {
+//         await fs.promises.writeFile(newFile, words);
+//         console.log('Arquivo salvo');
+//     } catch (err) {
+//         throw err;
+//     }
+// }
 
-/** Salvando arquivo */
-async function saveFile(wordsList, path) {
+/** requisição asincrona com then */
+function saveFile(wordsList, path) {
     const newFile = `${path}/result.txt`;
     const words = JSON.stringify(wordsList);
-    
-    try {
-        await fs.promises.writeFile(newFile, words);
-        console.log('Arquivo salvo');
-    } catch (err) {
-        throw err;
-    }
+
+    fs.promises.writeFile(newFile, words)
+        .then(() => {
+            /** processamento realizado com o resultado do promise */
+            console.log('Arquivo criado');
+        })
+        .catch((err) => {
+            throw err;
+        })
+        .finally(() => console.log('Operação finalizada'));
 }
+
+/** node .\src\cli.js '.\files\texto-kanban.txt' */
