@@ -20,3 +20,10 @@ Curso da Alura de Introdução a JavaScript.
 - Como percorrer propriedades de objetos e interagir com elas
 - O que são métodos de objetos e como utilizá-los
 - Manipule objetos utilizando métodos do JavaScript
+
+### Curso 04 - JavaScript com Node.js: criando sua primeira biblioteca
+- Lógica de programação com JavaScript resolvendo um problema real
+- Crie seus próprios comandos para serem executados no terminal
+- O que são promessas e como trabalhar com código assíncrono em JavaScript
+- Como utilizar bibliotecas nativas do Node.js para interagir com o sistema de arquivos do computador
+- Importando e utilizando métodos de repositórios de código aberto
