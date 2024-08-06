@@ -45,4 +45,12 @@ export default class User {
     get name() {
         return this.#name;
     }
+
+    get active() {
+        return this.#active;
+    }
+
+    set active(status) {
+        this.#active = status;
+    }
 }

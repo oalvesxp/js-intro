@@ -10,6 +10,11 @@ const user = new User(
 );
 
 console.log(user.getInfo());
+user.active = false;
+console.log(`
+            Ativo: ${user.active}
+`);
+
 
 /** Instanciando um usuário ADMIN */
 const admin = new Admin(
