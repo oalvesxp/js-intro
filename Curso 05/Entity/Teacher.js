@@ -19,9 +19,9 @@ export default class Teacher extends User {
 
     approveStudent(student, curso){
         return `
-            Curso:      ${student}
+            Aluno:      ${student}
             Vagas:      ${curso}
-            Docente:    ${this.name}
+            Docente:    ${this.getName()}
             Status:     Aprovado!
         `;
     }
