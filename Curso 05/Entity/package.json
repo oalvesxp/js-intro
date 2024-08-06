@@ -1,0 +1,13 @@
+{
+  "name": "js-oo",
+  "version": "1.0.0",
+  "main": "User.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Osvaldo A. Neto",
+  "license": "ISC",
+  "description": "Estudo de POO com JavaScript"
+}
