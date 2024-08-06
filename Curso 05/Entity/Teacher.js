@@ -21,7 +21,7 @@ export default class Teacher extends User {
         return `
             Aluno:      ${student}
             Vagas:      ${curso}
-            Docente:    ${this.getName()}
+            Docente:    ${this.name}
             Status:     Aprovado!
         `;
     }

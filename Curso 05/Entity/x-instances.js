@@ -36,7 +36,7 @@ const teacher = new Teacher(
 console.log(teacher.getInfo());
 console.log(
     teacher.approveStudent(
-        user.getName()
+        user.name
         , 'JavaScript - Orientação a Objetos'
     )
 );

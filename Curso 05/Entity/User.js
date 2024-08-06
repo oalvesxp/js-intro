@@ -42,7 +42,7 @@ export default class User {
         `;
     }
 
-    getName() {
+    get name() {
         return this.#name;
     }
 }
