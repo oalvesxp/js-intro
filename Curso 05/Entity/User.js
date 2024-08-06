@@ -19,13 +19,26 @@ export default class User {
         this.#active     = active
     }
 
+    /** Private */
+    #getObject() {
+        return ({
+            "nome": this.#name,
+            "email": this.#email,
+            "nasc": this.#birthdate,
+            "grupo": this.#role,
+            "status": this.#active
+        })
+    }
+
     getInfo() {
+        const object = this.#getObject();
+
         return `
-            Nome:   ${this.#name}
-            E-mail: ${this.#email}
-            Nasc.:  ${this.#birthdate}
-            Grupo:  ${this.#role}
-            Ativo:  ${this.#active}
+            Nome:   ${object.nome}
+            E-mail: ${object.email}
+            Nasc.:  ${object.nasc}
+            Grupo:  ${object.grupo}
+            Ativo:  ${object.status}
         `;
     }
 
