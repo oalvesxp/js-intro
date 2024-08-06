@@ -4,7 +4,7 @@ const user = {
     birthdate:  '1997-02-26',
     role:       'student',
     status:     true,   // default
-    getInfo: function() {
+    getInfo:    function() {
         console.log(
             this.name, 
             this.email, 
