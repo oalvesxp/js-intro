@@ -27,3 +27,10 @@ Curso da Alura de Introdução a JavaScript.
 - O que são promessas e como trabalhar com código assíncrono em JavaScript
 - Como utilizar bibliotecas nativas do Node.js para interagir com o sistema de arquivos do computador
 - Importando e utilizando métodos de repositórios de código aberto
+
+### Curso 05 - JavaScript: programação orientada a objetos
+- Principais conceitos da orientação a objetos
+- Como o JavaScript lida com a POO através de funções e protótipos
+- Princípios de classe, objeto e herança
+- O que é o encapsulamento e por que é importante
+- Como funciona o polimorfismo em JavaScript
