@@ -12,5 +12,16 @@ const user = {
             this.role,
             this.status
         );
-    }
+    },
+};
+
+user.getInfo();
+
+
+const getName = function() {
+    console.log(this.name);
 }
+
+/** Herança de protótipo */
+const name = getName.bind(user);
+name();
