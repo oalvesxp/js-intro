@@ -23,13 +23,3 @@ export default class User {
         `;
     }
 }
-
-const user = new User(
-    'Osvaldo A. Neto'
-    , 'oalves.neto@outlook.com'
-    , '1997-02-26'
-);
-
-console.log(user);
-console.log(user.getInfo());
-console.log(User.prototype.isPrototypeOf(user));

@@ -1,11 +1,11 @@
 import User from "./User.js";
 
-export default class Admin extends User {
+export default class Teacher extends User {
     constructor(
         name
         , email 
         , birthdate
-        , role = "admin"
+        , role = "teacher"
         , active = true
     ) {
         super(
@@ -17,10 +17,12 @@ export default class Admin extends User {
         );
     }
 
-    addCourse(name, vacancies){
+    approveStudent(student, curso){
         return `
-            Curso: ${name}
-            Vagas: ${vacancies}
+            Curso:      ${student}
+            Vagas:      ${curso}
+            Docente:    ${this.name}
+            Status:     Aprovado!
         `;
     }
 }
