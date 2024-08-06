@@ -23,4 +23,10 @@ export default class Admin extends User {
             Vagas: ${vacancies}
         `;
     }
+
+    /** Override */
+    getInfo() {
+        const info = super.getInfo();
+        return `Usuário Admin : ${info}`;
+    }
 }
